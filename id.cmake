@@ -1,5 +1,5 @@
 set(package Boost)
-set(version 1.64.0)
+set(version 1.65.1)
 
 byd__package__info(${package}
     MAINTAINER_NAME "David Callu"
@@ -10,6 +10,6 @@ byd__package__info(${package}
     )
 
 byd__package__download_info(
-    URL "https://sourceforge.net/projects/boost/files/boost/1.64.0/boost_1_64_0.tar.bz2"
-    URL_HASH SHA1=51421ef259a4530edea0fbfc448460fcc5c64edb
+    URL "https://sourceforge.net/projects/boost/files/boost/1.65.1/boost_1_65_1.tar.bz2"
+    URL_HASH SHA1=4a5b0c3c1b1b9a4d6cb6a6cc395e903e76f76720
     )
