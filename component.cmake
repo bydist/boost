@@ -1,0 +1,33 @@
+include("${CMAKE_CURRENT_LIST_DIR}/id.cmake")
+
+byd__package__add_component(${package}
+    atomic
+    chrono
+    container
+    context
+    coroutine
+    date_time
+    exception
+    fiber
+    filesystem
+    graph
+    graph_parallel
+    iostreams
+    locale
+    log
+    math
+    metaparse
+    mpi
+    program_options
+    python
+    random
+    regex
+    serialization
+    signals
+    system
+    test
+    thread
+    timer
+    type_erasure
+    wave
+    )
