@@ -24,6 +24,7 @@ byd__package__add_component(${package}
     regex
     serialization
     signals
+    stacktrace
     system
     test
     thread
