@@ -71,4 +71,4 @@ byd__custom_patch(${package} patchList)
 
 
 # add BoostBuild step
-byd__BoostBuild__add(${package})
+byd__BoostBuild__add(${package} SKIP test)
