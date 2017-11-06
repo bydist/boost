@@ -65,7 +65,7 @@ byd__EP__compile_in_source(${package} ON)
 # add custom_patch step
 file(GLOB patchList
     LIST_DIRECTORIES false
-    "patch/*.patch"
+    "${CMAKE_CURRENT_LIST_DIR}/patch/*.patch"
     )
 byd__custom_patch(${package} patchList)
 
