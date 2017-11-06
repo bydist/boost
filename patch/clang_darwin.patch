@@ -1,10 +1,10 @@
-diff -Naur Boost/libs/locale/build/Jamfile.v2 Boost_patch/libs/locale/build/Jamfile.v2
---- Boost/tools/build/src/tools/clang-darwin.jam	2017-04-17 04:22:26.000000000 +0200
-+++ Boost_patch/tools/build/src/tools/clang-darwin.jam	2017-06-15 07:55:47.000000000 +0200
-@@ -169,6 +169,10 @@
-
+diff -Naur boost2/tools/build/src/tools/clang-darwin.jam boost/tools/build/src/tools/clang-darwin.jam
+--- boost2/tools/build/src/tools/clang-darwin.jam	2017-09-02 11:56:19.000000000 +0200
++++ boost/tools/build/src/tools/clang-darwin.jam	2017-11-06 07:43:08.322585955 +0100
+@@ -166,6 +166,10 @@
+ 
  flags clang-darwin.link USER_OPTIONS <linkflags> ;
-
+ 
 +# Set the max header padding to allow renaming of libs for installation.
 +flags clang-darwin.link.dll OPTIONS : -headerpad_max_install_names ;
 +
