@@ -1,16 +1,13 @@
 
 
+
+
 function(build package)
 
-    byd__package__split_package_component_name("${package}" package_name component_name)
-    byd__private__is_empty(component_name is_empty_component_name)
+    byd__package__check_component(${package})
 
 
-    if(is_empty_component_name)
-        cmut_info("[byd] - [boost] : no component to build.")
-        return()
-    endif()
-
+    byd__package__split_package_component_name(${package} package_name component_name)
     if("${component_name}" STREQUAL "boost")
 
         byd__package__get_components(${package_name} components)
