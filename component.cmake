@@ -1,6 +1,7 @@
 include("${CMAKE_CURRENT_LIST_DIR}/id.cmake")
 
 byd__package__add_component(${package}
+    boost # header only part of boost
     atomic
     chrono
     container
