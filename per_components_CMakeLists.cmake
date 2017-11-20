@@ -61,6 +61,11 @@ file(GLOB patchList
     )
 byd__custom_patch(${package} patchList)
 
+# mv dll in bin directory on windows
+if(WIN32)
+    include("${CMAKE_CURRENT_LIST_DIR}/action/byd__boost__mv_dll_in_bin.cmake")
+    byd__boost__mv_dll_in_bin(${package})
+endif()
 
 # add BoostBuild step
 byd__BoostBuild__add(${package} SKIP test)
