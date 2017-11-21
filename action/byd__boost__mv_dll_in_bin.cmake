@@ -1,4 +1,4 @@
-
+include("${BYD_ROOT}/cmake/modules/EP/step/log.cmake")
 
 
 function(byd__boost__mv_dll_in_bin package)
