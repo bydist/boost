@@ -1,0 +1,31 @@
+
+
+
+function(run_command_or_abort)
+    execute_process(COMMAND ${ARGN} RESULT_VARIABLE result)
+    if(result)
+        set(msg "Command failed (${result}):\n")
+        foreach(arg IN LISTS ${command})
+            set(msg "${msg} '${arg}'")
+        endforeach()
+        message(FATAL_ERROR "${msg}")
+    endif()
+endfunction()
+
+
+
+file(GLOB dlls
+    "@install_dir@/lib/*.dll"
+    )
+
+if(NOT "${dlls}" STREQUAL "")
+    run_command_or_abort( ${CMAKE_COMMAND} -E make_directory "@install_dir@/bin" )
+endif()
+    
+foreach(dll IN LISTS dlls)
+    
+    get_filename_component(dll_filename "${dll}" NAME)
+    message(STATUS "move \"${dll}\" ===>> \"@install_dir@/bin/${dll_filename}\"")
+    run_command_or_abort( ${CMAKE_COMMAND} -E rename "${dll}" "@install_dir@/bin/${dll_filename}" )
+    
+endforeach()

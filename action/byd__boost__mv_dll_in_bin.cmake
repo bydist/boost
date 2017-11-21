@@ -4,15 +4,16 @@ include("${BYD_ROOT}/cmake/modules/EP/step/log.cmake")
 function(byd__boost__mv_dll_in_bin package)
 
     byd__package__get_install_dir( ${package} install_dir )
+    byd__package__get_script_dir( ${package} script_dir )
 
-
-    list(APPEND
-        mv_dll_in_bin_COMMAND
-        COMMAND ${CMAKE_COMMAND} -E rename "${install_dir}/lib/*.dll" "${install_dir}/bin/*.dll"
+    configure_file(
+        "${CMAKE_CURRENT_LIST_DIR}/action/mv_dll.cmake.in"
+        "${script_dir}/mv_dll.cmake"
+        @ONLY
         )
 
     set(arguments
-        ${mv_dll_in_bin_COMMAND}
+        COMMAND ${CMAKE_COMMAND} -P "${script_dir}/mv_dll.cmake"
         DEPENDEES install
         DEPENDERS create_archive
         )
