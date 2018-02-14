@@ -17,7 +17,6 @@ byd__package__add_component(${package}
     locale
     log
     math
-    metaparse
     mpi
     program_options
     python
