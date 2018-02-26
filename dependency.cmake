@@ -25,7 +25,7 @@ function(byd__boost__define_dependencies)
         string(TOUPPER ${lib} LIB)
         unset(dependencies)
         foreach(dependency IN LISTS _Boost_${LIB}_DEPENDENCIES)
-            list(APPEND dependencies boost--${dependency})
+            list(APPEND dependencies Boost--${dependency})
         endforeach()
 
         byd__package__set_component_dependencies(${package}
