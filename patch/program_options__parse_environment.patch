@@ -1,0 +1,34 @@
+--- boost/libs/program_options/src/parsers.cpp	2018-03-23 11:42:43.191194568 +0100
++++ boost_patched/libs/program_options/src/parsers.cpp	2018-03-23 14:48:29.537269796 +0100
+@@ -196,7 +196,30 @@
+
+             if (!option_name.empty()) {
+                 option n;
+-                n.string_key = option_name;
++
++                const option_description* xd;
++                try
++                {
++                    xd = desc.find_nothrow(option_name,
++                                           false,
++                                           true,
++                                           true);
++                }
++                catch(error_with_option_name& e)
++                {
++                    // add option name and rethrow
++                    e.set_option_name(n.string_key);
++                    throw;
++                }
++                if ( ! xd )
++                {
++                    n.unregistered = true;
++                    n.string_key = option_name;
++                }
++                else
++                {
++                    n.string_key = xd->long_name();
++                }
+                 n.value.push_back(i->second);
+                 result.options.push_back(n);
+             }
