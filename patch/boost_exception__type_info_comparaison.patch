@@ -1,0 +1,14 @@
+--- a/boost/exception/detail/type_info.hpp
++++ b/boost/exception/detail/type_info.hpp
+@@ -64,7 +64,11 @@ boost
+             bool
+             operator<( type_info_ const & a, type_info_ const & b )
+                 {
++#ifdef __APPLE__
++                return boost::string_view(a.type_->name()) < boost::string_view(b.type_->name());
++#else
+                 return 0!=(a.type_->before(*b.type_));
++#endif
+                 }
+             };
+         }
