@@ -6,9 +6,40 @@
  #include <boost/current_function.hpp>
 +#include <boost/utility/string_view.hpp>
  #include <string>
-
+ 
  #if (__GNUC__*100+__GNUC_MINOR__>301) && !defined(BOOST_EXCEPTION_ENABLE_WARNINGS)
-@@ -64,7 +65,11 @@ boost
+@@ -52,19 +53,42 @@
+         struct
+         type_info_
+             {
++        private:
+             core::typeinfo const * type_;
+ 
++        public:
+             explicit
+             type_info_( core::typeinfo const & type ):
+                 type_(&type)
+                 {
+                 }
+ 
++            const char * name() const
++                {
++                    return type_->name();
++                }
++
++            friend
++            bool
++            operator==( type_info_ const & a, type_info_ const & b )
++                {
++#ifdef __APPLE__
++                return boost::string_view(a.type_->name()) == boost::string_view(b.type_->name());
++#else
++                return (a.type_) == (*b.type_);
++#endif
++                }
++
++
+             friend
              bool
              operator<( type_info_ const & a, type_info_ const & b )
                  {
@@ -20,3 +51,27 @@
                  }
              };
          }
+
+--- a/boost/exception/diagnostic_information.hpp
++++ b/boost/exception/diagnostic_information.hpp
+@@ -154,7 +154,7 @@
+ #ifndef BOOST_NO_RTTI
+             if ( verbose )
+                 tmp << std::string("Dynamic exception type: ") <<
+-                    core::demangle((be?(BOOST_EXCEPTION_DYNAMIC_TYPEID(*be)):(BOOST_EXCEPTION_DYNAMIC_TYPEID(*se))).type_->name()) << '\n';
++                    core::demangle((be?(BOOST_EXCEPTION_DYNAMIC_TYPEID(*be)):(BOOST_EXCEPTION_DYNAMIC_TYPEID(*se))).name()) << '\n';
+ #endif
+             if( with_what && se && verbose )
+                 tmp << "std::exception::what: " << wh << '\n';
+diff -Naur ../../../Release/byd/_install/include/boost/exception/info.hpp include/boost/exception/info.hpp
+--- ../../../Release/byd/_install/include/boost/exception/info.hpp	2018-06-29 15:56:36.000000000 +0200
++++ include/boost/exception/info.hpp	2018-07-02 15:26:05.000000000 +0200
+@@ -82,7 +82,7 @@
+                     {
+                     shared_ptr<error_info_base> const & p = i->second;
+ #ifndef BOOST_NO_RTTI
+-                    BOOST_ASSERT( *BOOST_EXCEPTION_DYNAMIC_TYPEID(*p).type_==*ti.type_ );
++                    BOOST_ASSERT( BOOST_EXCEPTION_DYNAMIC_TYPEID(*p)==ti );
+ #endif
+                     return p;
+                     }
