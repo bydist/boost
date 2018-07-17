@@ -1,0 +1,14 @@
+
+byd__package__get_install_dir(${package} install_dir)
+
+
+byd__EP__set_package_argument(${package} DOWNLOAD DOWNLOAD_NO_EXTRACT 1)
+
+byd__EP__set_package_argument(${package} DOWNLOAD  DOWNLOAD_COMMAND  "${CMAKE_COMMAND}" "-E" "echo" "no configure step")
+byd__EP__set_package_argument(${package} CONFIGURE CONFIGURE_COMMAND "${CMAKE_COMMAND}" "-E" "echo" "no configure step")
+byd__EP__set_package_argument(${package} BUILD     BUILD_COMMAND     "${CMAKE_COMMAND}" "-E" "echo" "no build step")
+byd__EP__set_package_argument(${package} INSTALL   INSTALL_COMMAND   "${CMAKE_COMMAND}" "-E" "make_directory" "${install_dir}")
+
+
+
+byd__EP__add(${package})

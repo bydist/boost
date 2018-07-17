@@ -36,7 +36,7 @@ endif()
 
 
 # configure boost.locale build
-if("locale" IN_LIST BOOST_COMPONENTS_TO_BUILD)
+#if("locale" IN_LIST BOOST_COMPONENTS_TO_BUILD)
     byd__BoostBuild__build__add_args(${package} "boost.locale.icu=on")
     byd__BoostBuild__build__add_args(${package} "boost.locale.std=off")
     if(WIN32)
@@ -45,7 +45,7 @@ if("locale" IN_LIST BOOST_COMPONENTS_TO_BUILD)
         byd__BoostBuild__build__add_args(${package} "boost.locale.iconv=off")
         byd__BoostBuild__build__add_args(${package} "boost.locale.posix=off")
     endif()
-endif()
+#endif()
 
 
 

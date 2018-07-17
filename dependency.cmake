@@ -43,6 +43,28 @@ endfunction()
 
 byd__boost__define_dependencies()
 
+
+byd__package__get_components(${package} components)
+if(components STREQUAL "")
+    include("${CMAKE_CURRENT_LIST_DIR}/component.cmake")
+    byd__package__get_components(${package} components)
+endif()
+
+
+list(REMOVE_ITEM components boost)
+foreach(component IN LISTS components)
+
+    byd__package__set_component_dependencies(${package}
+    COMPONENT
+        ${component}
+    DEPENDS
+        Boost--boost
+    )
+
+endforeach()
+
+
+
 byd__package__add_component_dependencies(${package}
     COMPONENT
         iostreams
