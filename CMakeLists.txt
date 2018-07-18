@@ -21,6 +21,8 @@ function(build package)
 
 #        byd__BoostBuild__build__add_args(${package} "--with-${component_name}")
 
+        byd__BoostBuild__build__add_args(${package} "--without-python")
+
         include("${CMAKE_CURRENT_LIST_DIR}/per_components_CMakeLists.cmake")
     else()
         include("${CMAKE_CURRENT_LIST_DIR}/dummy_CMakeLists.txt")
