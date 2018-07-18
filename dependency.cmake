@@ -67,7 +67,8 @@ endforeach()
 
 byd__package__add_component_dependencies(${package}
     COMPONENT
-        iostreams
+    #        iostreams
+        boost
     DEPENDS
         zlib
         bzip2
@@ -76,14 +77,16 @@ byd__package__add_component_dependencies(${package}
 if(NOT ANDROID)
     byd__package__add_component_dependencies(${package}
         COMPONENT
-            regex
+        #            regex
+            boost
         DEPENDS
             icu
     )
 
     byd__package__add_component_dependencies(${package}
         COMPONENT
-            locale
+        #            locale
+            boost
         DEPENDS
             icu
     )
