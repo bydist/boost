@@ -1,0 +1,32 @@
+diff -Naur boost_1_67_0/libs/locale/build/Jamfile.v2 Boost--boost/libs/locale/build/Jamfile.v2
+--- boost_1_67_0/libs/locale/build/Jamfile.v2	2018-04-11 15:49:04.000000000 +0200
++++ Boost--boost/libs/locale/build/Jamfile.v2	2018-08-08 16:05:12.312168100 +0200
+@@ -75,13 +75,6 @@
+                             <link>shared 
+                             <runtime-link>shared ;
+ 
+-    searched-lib icuuc : :  <toolset>msvc
+-                            <variant>debug
+-                            <name>icuucd
+-                            <search>$(ICU_PATH)/lib
+-                            <link>shared
+-                            <runtime-link>shared ;
+-
+     searched-lib icuuc : :  <name>this_is_an_invalid_library_name ;
+ 
+     searched-lib icudt : :  <search>$(ICU_PATH)/lib
+@@ -103,14 +96,6 @@
+                             <runtime-link>shared ;
+ 
+     searched-lib icuin : :  <toolset>msvc
+-                            <variant>debug
+-                            <name>icuind
+-                            <search>$(ICU_PATH)/lib
+-                            <link>shared
+-                            <runtime-link>shared ;
+-
+-    searched-lib icuin : :  <toolset>msvc
+-                            <variant>release
+                             <name>icuin
+                             <search>$(ICU_PATH)/lib
+                             <link>shared
