@@ -1,5 +1,5 @@
 set(package Boost)
-set(version 1.68.0)
+set(version  1.69.0)
 
 byd__package__info(${package}
     MAINTAINER_NAME "David Callu"
@@ -9,9 +9,9 @@ byd__package__info(${package}
     )
 
 byd__package__download_info(${package}
-    URL "https://dl.bintray.com/boostorg/release/1.68.0/source/boost_1_68_0.tar.bz2"
-    URL_HASH SHA1=18863a7cae4d58ae85eb63d400f774f60a383411
+    URL "https://dl.bintray.com/boostorg/release/1.69.0/source/boost_1_69_0.tar.bz2"
+    URL_HASH SHA256=8f32d4617390d1c2d16f26a27ab60d97807b35440d45891fa340fc2648b04406
 #    GIT_REPOSITORY "https://github.com/boostorg/boost.git"
-#    GIT_TAG boost-1.67.0-rc2
+#    GIT_TAG boost-1.69.0
 #    GIT_CONFIG submodule.fetchJobs=${BYD__OPTION__JOBS}
     )
