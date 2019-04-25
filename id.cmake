@@ -1,11 +1,11 @@
 set(package Boost)
 set(version  1.70.0)
-set(package_version  ${version})
+set(package_version  ${version}-3)
 
 byd__package__info(${package}
     MAINTAINER_NAME "David Callu"
     MAINTAINER_EMAIL "callu.david@gmail.com"
-    VERSION ${package_version}-2
+    VERSION ${package_version}
     ABI ${package_version}
     )
 
