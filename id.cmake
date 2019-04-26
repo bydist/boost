@@ -1,6 +1,6 @@
 set(package Boost)
 set(version  1.70.0)
-set(package_version  ${version}-3)
+set(package_version  ${version}-4)
 
 byd__package__info(${package}
     MAINTAINER_NAME "David Callu"
